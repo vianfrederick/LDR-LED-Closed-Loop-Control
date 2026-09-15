@@ -19,7 +19,7 @@ unsigned long last_time = 0;
 float dt_sec;
 float kp = 2.5;
 float ki = 1;
-float kd = 0.1;
+float kd = 0;
 
 void setup() {
   pinMode(photoiresistor_pin, INPUT);
@@ -47,7 +47,9 @@ void loop() {
   float raw_voltage = raw_reading*(5./1023.);
   float set_point_value = regulator_reading_value;
   
-  filtered_reading = alpha * raw_reading + (1 - alpha) * filtered_reading;
+  filtered_reading =
+      alpha * raw_reading +
+      (1 - alpha) * filtered_reading;
 
   float error = set_point_value - filtered_reading;
 
@@ -59,12 +61,16 @@ void loop() {
   output = proportional + (ki * integral) + (kd * derivative);
   output = constrain(output, 0, 255);
 
+  float output_voltage = output*(5./255.);
+
   analogWrite(led_pin, output);
 
   Serial.print("Setpoint:");
   Serial.print(set_point_voltage);
-  Serial.print(",Raw:");
-  Serial.println(raw_voltage);
+  Serial.print(",Reading:");
+  Serial.print(raw_voltage);
+  Serial.print(",PWM_output:");
+  Serial.println(output_voltage);
 
   delay(delay_time);
 }
