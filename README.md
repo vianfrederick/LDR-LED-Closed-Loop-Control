@@ -22,8 +22,8 @@ The potentiometer provides the reference setpoint. The Arduino compares it with 
 
 The prototype was built on an Arduino Uno and a breadboard.
 
-![Final Hardware](Hardware/final_hardware_1.jpeg)
-![Final Hardware](Hardware/final_hardware_2.jpeg)
+![Final Hardware](Hardware/hardware_1.jpeg)
+![Final Hardware](Hardware/hardware_2.jpeg)
 
 ### Main Components
 
