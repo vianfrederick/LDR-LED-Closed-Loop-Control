@@ -19,7 +19,7 @@ unsigned long last_time = 0;
 float dt_sec;
 float kp = 2.5;
 float ki = 1;
-float kd = 0;
+float kd = 0.05;
 
 void setup() {
   pinMode(photoiresistor_pin, INPUT);
